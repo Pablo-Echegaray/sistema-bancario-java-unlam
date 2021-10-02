@@ -2,8 +2,8 @@ package ar.edu.unlam.dominio;
 
 public class CuentaSueldo extends Cuenta{
 
-	public CuentaSueldo(Integer cbu, Double saldo) {
-		super(cbu, saldo);
+	public CuentaSueldo(Integer cbu, Double saldo, Cliente cliente) {
+		super(cbu, saldo, cliente);
 		super.setTipoCuenta(TipoCuenta.SUELDO);
 	}
 

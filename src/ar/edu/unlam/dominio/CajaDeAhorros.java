@@ -6,8 +6,8 @@ public class CajaDeAhorros extends Cuenta {
 	private final Integer ADICIONAL = 6;
 	private final Integer MAXIMO_EXTRACCION = 5;
 
-	public CajaDeAhorros(Integer cbu,Double saldo) {
-		super(cbu,saldo);
+	public CajaDeAhorros(Integer cbu,Double saldo, Cliente cliente) {
+		super(cbu,saldo, cliente);
 		super.setTipoCuenta(TipoCuenta.CAJA_AHORRO);
 	}
 

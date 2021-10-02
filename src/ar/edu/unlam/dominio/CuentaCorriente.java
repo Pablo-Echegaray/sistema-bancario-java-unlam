@@ -5,9 +5,9 @@ public class CuentaCorriente extends Cuenta{
 	private Double sobreGiro;
 	private Double deudaConBanco;
 	
-	public CuentaCorriente(Integer cbu, Double saldo) {
+	public CuentaCorriente(Integer cbu, Double saldo, Cliente cliente) {
 	
-		 super(cbu, saldo);
+		 super(cbu, saldo, cliente);
 		 this.sobreGiro=300.0;
 		 this.deudaConBanco=0.0;
 		
@@ -43,5 +43,7 @@ public class CuentaCorriente extends Cuenta{
 		return importeRetirado;
 		
 	}
+	
+	
 	
 }

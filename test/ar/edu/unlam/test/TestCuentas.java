@@ -8,6 +8,7 @@ import org.junit.Test;
 import ar.edu.unlam.dominio.Banco;
 import ar.edu.unlam.dominio.CajaDeAhorros;
 import ar.edu.unlam.dominio.Cliente;
+import ar.edu.unlam.dominio.Cuenta;
 import ar.edu.unlam.dominio.CuentaCorriente;
 import ar.edu.unlam.dominio.CuentaSueldo;
 
@@ -109,4 +110,25 @@ public class TestCuentas {
 		assertEquals(false, seAgregaOtraVez);
 	}
 	
+	@Test
+	public void testConsultarCuentasDeCliente() {
+		Cuenta[] cuentasCliente = new Cuenta[3];
+		Integer cantidadDeCuentas=0;
+		Integer cantidadDeCuentasEsperada=3;
+		
+		bancoNacional.agregarCuenta(pabloCuentaSueldo);
+		bancoNacional.agregarCuenta(pabloCajaDeAhorros);
+		bancoNacional.agregarCuenta(pabloCuentaCorriente);
+		
+	    cuentasCliente = bancoNacional.consultarCuentasDeCliente(pablo);
+	    
+	    for(int i= 0; i<cuentasCliente.length; i++ ) {
+	    	if(cuentasCliente[i] != null)
+	    		if(cuentasCliente[i].getCliente().equals(pablo))
+	    			cantidadDeCuentas++;
+	    }
+	    
+	    assertEquals(cantidadDeCuentasEsperada, cantidadDeCuentas);
+		
+	}
 }

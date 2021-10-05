@@ -10,6 +10,7 @@ public class CuentaCorriente extends Cuenta{
 		 super(cbu, saldo, cliente);
 		 this.sobreGiro=300.0;
 		 this.deudaConBanco=0.0;
+		 super.setTipoCuenta(TipoCuenta.CUENTA_CORRIENTE);
 		
 	}
 	

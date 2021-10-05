@@ -32,12 +32,24 @@ public class CuentaCorriente extends Cuenta{
 		if (extraccion <= super.getSaldo()) {
 			importeRetirado = extraccion;
 			super.setSaldo(super.getSaldo() - extraccion);
-		} else if (extraccion <= (super.getSaldo() + this.sobreGiro)) {
+			
+		} 
+		else if (extraccion <= (super.getSaldo() + this.sobreGiro) && super.getSaldo()>0) {
 			this.sobreGiro -= (extraccion - super.getSaldo());
-			this.deudaConBanco += ((extraccion - super.getSaldo()) *5) /100 ;
-			super.setSaldo(super.getSaldo());
+			this.deudaConBanco = ((extraccion - super.getSaldo()) *5) /100 ;
+			
 			importeRetirado = extraccion;
-		} else {
+			super.setSaldo(super.getSaldo() - (importeRetirado + this.deudaConBanco));
+		} 
+		
+		else if(extraccion<= this.sobreGiro) {
+			this.sobreGiro -= extraccion;
+			this.deudaConBanco = extraccion * 5 / 100;
+			importeRetirado = extraccion;
+			super.setSaldo(super.getSaldo() - (importeRetirado + deudaConBanco));
+		}
+		
+		else {
 			importeRetirado = 0.0d;
 		}
 		return importeRetirado;

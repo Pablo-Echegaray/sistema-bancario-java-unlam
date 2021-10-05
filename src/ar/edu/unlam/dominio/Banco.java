@@ -5,10 +5,13 @@ package ar.edu.unlam.dominio;
 public class Banco {
 	
 	private Cuenta[] cuentas;
+	private Cliente [] clientesVip;
+	private Integer count=0;
 	
 	
 	public Banco() {
 		this.cuentas = new Cuenta[12];
+		this.clientesVip=new Cliente[5];
 		
 	}
 	
@@ -44,5 +47,27 @@ public class Banco {
 		
 		return cuentas;
 	}
+	
+	public Double consultarSaldoTotalEnCuentas(Cliente cliente) {
+		Cuenta [] cuentas= consultarCuentasDeCliente(cliente);
+		Double sumaDeSaldos = 0.0;
+		for(int i=0; i<cuentas.length; i++) {
+			if(cuentas[i] != null) {
+				sumaDeSaldos+=cuentas[i].getSaldo();
+			}
+				
+		}
+		return sumaDeSaldos;
+	}
+	
+	public Boolean agregarClienteVip(Cliente cliente) {
+		Boolean vip=false;
+		Double haberes = consultarSaldoTotalEnCuentas(cliente);
+		if(haberes >= 2000.0) {
+			clientesVip[count++] = cliente;
+		}
+		return vip;
+	}
+	
 
 }
